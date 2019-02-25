@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">翻譯</string>
+    <string name="action_settings">設置</string>
+    <string name="zh">簡體中文</string>
+    <string name="en">英文</string>
+    <string name="yue">粵語</string>
+    <string name="auto">自動檢測</string>
+    <string name="select_language">選擇語言</string>
+    <string name="wyw">文言文</string>
+    <string name="jp">日語</string>
+    <string name="kor">韓文</string>
+    <string name="fra">法語</string>
+    <string name="spa">西班牙語</string>
+    <string name="th">泰語</string>
+    <string name="ara">阿拉伯語</string>
+    <string name="ru">俄語</string>
+    <string name="pt">葡萄牙語</string>
+    <string name="de">德語</string>
+    <string name="it">意大利語</string>
+    <string name="el">希臘語</string>
+    <string name="nl">荷蘭語</string>
+    <string name="pl">波蘭語</string>
+    <string name="text_copied_clipboard">文本已複製到剪貼板</string>
+    <string name="action_reverse">反向翻譯</string>
+    <string name="action_share">分享</string>
+    <string name="share_with">分享翻譯</string>
+    <string name="description">Stanley Cao肝出来的</string>
+    <string name="cht">繁體中文</string>
+    <string name="bul">保加利亞語</string>
+    <string name="est">愛沙尼亞</string>
+    <string name="dan">丹麥語</string>
+    <string name="fin">芬蘭語</string>
+    <string name="cs">捷克語</string>
+    <string name="rom">羅馬尼亞語</string>
+    <string name="slo">斯洛伐克語</string>
+    <string name="swe">瑞典語</string>
+    <string name="hu">匈牙利語</string>
+    <string name="vie">越南語</string>
+</resources>

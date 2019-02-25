@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="language"
+            type="androidx.core.util.Pair&lt;String,String>" />
+        <variable
+            name="isSelected"
+            type="com.elfstack.translate.MainActivity.IsItemSelected" />
+        <variable
+            name="listener"
+            type="com.elfstack.translate.MainActivity.OnItemClickListener" />
+    </data>
+    <LinearLayout android:id="@+id/fragment_history_bottom_sheet_delete"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{() -> listener.onItemClick(language.first)}"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/design_default_color_primary"
+            android:visibility="@{isSelected.isSelected(language.first) ? View.VISIBLE : View.INVISIBLE}"
+            app:srcCompat="@drawable/ic_check_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{language.second}"
+            android:layout_marginStart="16dp"
+            tools:text="English"/>
+    </LinearLayout>
+</layout>

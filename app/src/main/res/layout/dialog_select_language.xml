@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="androidx.core.util.Pair" />
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.elfstack.translate.viewmodel.LanguagesItemViewModel" />
+        <variable
+            name="isSelected"
+            type="com.elfstack.translate.MainActivity.IsItemSelected" />
+        <variable
+            name="listener"
+            type="com.elfstack.translate.MainActivity.OnItemClickListener" />
+    </data>
+    <LinearLayout
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:id="@+id/fragment_history_menu_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff" >
+
+        <include
+            android:id="@+id/autoSelect"
+            layout="@layout/item_selectable"
+            app:language="@{viewModel.auto}"
+            app:isSelected="@{isSelected}"
+            app:listener="@{listener}"
+            android:visibility="@{viewModel.isSrc ? View.VISIBLE: View.GONE}" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:items="@{viewModel.languages}"
+            app:itemBinding="@{viewModel.itemBinding}"
+            tools:listitem="@layout/item_selectable" />
+
+    </LinearLayout>
+</layout>
