@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnClearText) void clearText() {
-        mTranslatorViewModel.srcContent.postValue("");
+        mTranslatorViewModel.srcContent.setValue("");
         viewGroup.removeAllViews();
     }
 
@@ -122,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(String item) {
             if (mLanguagesItemViewModel.isSrc) {
-                mTranslatorViewModel.srcLang.postValue(item);
+                mTranslatorViewModel.srcLang.setValue(item);
             } else {
-                mTranslatorViewModel.dstLang.postValue(item);
+                mTranslatorViewModel.dstLang.setValue(item);
             }
             mBottomSheetDialog.hide();
         }
@@ -146,20 +146,16 @@ public class MainActivity extends AppCompatActivity {
     };
 
     TransResultCard.OnReverseTranslation reverseTrans = () -> {
-        mTranslatorViewModel.srcContent.postValue(mTranslatorViewModel.getDstContent().getValue());
+        TransResult result = mTranslatorViewModel.transResult.getValue();
+        if (result != null) {
+            mTranslatorViewModel.srcContent.setValue(mTranslatorViewModel.list2str(result.transResult));
 
-        if (mTranslatorViewModel.srcLang.getValue().equals("auto")) {
-            TransResult result = mTranslatorViewModel.transResult.getValue();
-            if (result != null) {
-                mTranslatorViewModel.srcLang.postValue(result.from);
+            if (mTranslatorViewModel.srcLang.getValue().equals("auto")) {
+                mTranslatorViewModel.srcLang.setValue(result.from);
             }
         }
 
         mTranslatorViewModel.swapLanguage();
-        mTranslatorViewModel.getTranslation().observe(this, t -> {
-           if (t != null) {
-               showTranslation();
-           }
-        });
+        showTranslation();
     };
 }

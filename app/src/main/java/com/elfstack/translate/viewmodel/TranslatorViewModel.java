@@ -30,13 +30,12 @@ public class TranslatorViewModel extends AndroidViewModel {
     public MutableLiveData<String> dstLang = new MutableLiveData<>();
     public MutableLiveData<String> srcContent = new MutableLiveData<>();
 
-    public MutableLiveData<String> detectedLang = new MutableLiveData<>();
     public MutableLiveData<TransResult> transResult = new MutableLiveData<>();
 
     public TranslatorViewModel(@NonNull Application application) {
         super(application);
-        srcLang.postValue("auto");
-        dstLang.postValue("en");
+        srcLang.setValue("auto");
+        dstLang.setValue("en");
     }
 
     public String getString(String lang) {
@@ -51,8 +50,8 @@ public class TranslatorViewModel extends AndroidViewModel {
         String srcLang = this.srcLang.getValue();
         String dstLang = this.dstLang.getValue();
 
-        this.srcLang.postValue(dstLang);
-        this.dstLang.postValue(srcLang);
+        this.srcLang.setValue(dstLang);
+        this.dstLang.setValue(srcLang);
     }
 
     public String list2str(List<TransLine> transLineList) {
@@ -69,7 +68,7 @@ public class TranslatorViewModel extends AndroidViewModel {
     }
 
     public LiveData<TransResult> getTranslation () {
-        transResult.postValue(null);
+        transResult.setValue(null);
         TransRequest request = new TransRequest(srcLang.getValue(), srcContent.getValue(), dstLang.getValue());
         Remote.getService().getTranslation(request).enqueue(new Callback<TransResult>() {
             @Override
