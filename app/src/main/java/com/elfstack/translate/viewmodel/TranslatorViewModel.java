@@ -9,6 +9,7 @@ import com.elfstack.translate.model.TransRequest;
 import com.elfstack.translate.model.TransResult;
 import com.elfstack.translate.remote.Remote;
 import com.elfstack.translate.remote.TranslationService;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class TranslatorViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<TransResult> call, Throwable t) {
-
+                // implement prompt on failure
             }
         });
         return transResult;
